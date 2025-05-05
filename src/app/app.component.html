@@ -1,0 +1,25 @@
+<router-outlet name="header"></router-outlet> 
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <router-outlet name="left">
+        <app-left></app-left> 
+      </router-outlet>
+    </div>
+
+
+    <div class="col-md-6">
+      <router-outlet></router-outlet> 
+    </div>
+
+    <div class="col-md-3">
+      <router-outlet name="right"><app-services></app-services></router-outlet> 
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <router-outlet name="footer"></router-outlet>  
+    </div>
+  </div>
+</div>

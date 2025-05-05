@@ -1,0 +1,136 @@
+<div class="class-record">
+  <h2>Student Records</h2>
+
+  <form (ngSubmit)="addStudent()">
+    <div>
+      <label for="id">ID:</label>
+      <input
+        type="number"
+        id="id"
+        [(ngModel)]="newStudent.id"
+        name="id"
+        required
+      />
+    </div>
+    <div>
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="newStudent.name"
+        name="name"
+        required
+      />
+    </div>
+    <div>
+      <label for="activityType">Activity Type:</label>
+      <input
+        type="text"
+        id="activityType"
+        [(ngModel)]="newStudent.activityType"
+        name="activityType"
+        required
+      />
+    </div>
+    <button type="submit">Add Student</button>
+  </form>
+
+  <div *ngIf="students.length === 0" class="empty-state">
+    No records available.
+  </div>
+
+  <table class="table table-striped" *ngIf="students.length > 0">
+    <thead>
+      <tr>
+        <th (click)="sortTable('id')">ID</th>
+        <th (click)="sortTable('name')">Name</th>
+        <th (click)="sortTable('activityType')">Activity Type</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of getPagedStudents(); index as i">
+        <td>{{ student.id }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.activityType }}</td>
+        <td>
+          <button class="btn btn-info" (click)="viewStudentDetails(student)">
+            View
+          </button>
+          <button class="btn btn-warning" (click)="editStudentDetails(student)">
+            Edit
+          </button>
+          <button class="btn btn-danger" (click)="deleteStudent(student)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <div class="pagination" *ngIf="students.length > pageSize">
+    <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage <= 1">
+      Prev
+    </button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button
+      (click)="onPageChange(currentPage + 1)"
+      [disabled]="currentPage >= totalPages"
+    >
+      Next
+    </button>
+  </div>
+
+  <!-- View Modal -->
+  <div *ngIf="selectedStudent" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h3>Student Details</h3>
+      <p><strong>ID:</strong> {{ selectedStudent.id }}</p>
+      <p><strong>Name:</strong> {{ selectedStudent.name }}</p>
+      <p><strong>Activity Type:</strong> {{ selectedStudent.activityType }}</p>
+    </div>
+  </div>
+
+  <!-- Edit Form -->
+  <div *ngIf="editMode" class="edit-form">
+    <h3>Edit Student</h3>
+    <form (ngSubmit)="saveEdit()">
+      <div>
+        <label for="editId">ID:</label>
+        <input
+          type="number"
+          id="editId"
+          [(ngModel)]="editStudent!.id"
+          name="editId"
+          readonly
+        />
+      </div>
+      <div>
+        <label for="editName">Name:</label>
+        <input
+          type="text"
+          id="editName"
+          [(ngModel)]="editStudent!.name"
+          name="editName"
+          required
+        />
+      </div>
+      <div>
+        <label for="editActivityType">Activity Type:</label>
+        <input
+          type="text"
+          id="editActivityType"
+          [(ngModel)]="editStudent!.activityType"
+          name="editActivityType"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-success">Save</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelEdit()">
+        Cancel
+      </button>
+    </form>
+  </div>
+</div>

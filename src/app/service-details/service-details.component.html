@@ -1,0 +1,16 @@
+<div class="add-service-form">
+  <h2>{{ serviceToEdit ? 'Edit Service' : 'Add New Service' }}</h2>
+  <form (ngSubmit)="submitService()">
+
+    <label for="name">Service Name:</label>
+    <input type="text" id="name" [(ngModel)]="serviceName" name="name" required />
+
+    <label for="category">Service Category:</label>
+    <input type="text" id="category" [(ngModel)]="serviceCategory" name="category" required />
+
+    <label for="description">Service Description:</label>
+    <input type="text" id="description" [(ngModel)]="serviceDescription" name="description" required />
+
+    <button type="submit">{{ serviceToEdit ? 'Update Service' : 'Add Service' }}</button>
+  </form>
+</div>

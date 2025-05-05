@@ -1,0 +1,39 @@
+<div class="container mt-4">
+  <h2>Contact Us</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="contact.name" name="name" placeholder="Enter your name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="contact.email" name="email" placeholder="Enter your email" required>
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea class="form-control" id="message" [(ngModel)]="contact.message" name="message" rows="3" placeholder="Enter your message" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <h3 class="mt-4">Submitted Messages</h3>
+  <table class="table table-bordered mt-2">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let message of submittedMessages; let i = index">
+        <td>{{ message.name }}</td>
+        <td>{{ message.email }}</td>
+        <td>{{ message.message }}</td>
+        <td>
+          <button class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

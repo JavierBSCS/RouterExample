@@ -1,0 +1,93 @@
+<form (ngSubmit)="onRegister()" #registerForm="ngForm">
+  <div class="form-container">
+    <div class="mb-3">
+      <label for="fullname" class="form-label">Full Name</label>
+      <input
+        type="text"
+        id="fullname"
+        name="fullname"
+        class="form-control"
+        required
+        [(ngModel)]="fullname"
+        placeholder="(Last Name, First Name, Middle Name)"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="address" class="form-label">Full Address</label>
+      <input
+        type="text"
+        id="address"
+        name="address"
+        class="form-control"
+        required
+        [(ngModel)]="address"
+        placeholder="(Street, City, State/Province, Postal Code)"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="mobilenumber" class="form-label">Mobile Number</label>
+      <input
+        type="text"
+        id="mobilenumber"
+        name="mobilenumber"
+        class="form-control"
+        required
+        [(ngModel)]="mobilenumber"
+        placeholder="(+63)"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        class="form-control"
+        required
+        [(ngModel)]="username"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="form-control"
+        required
+        [(ngModel)]="email"
+        placeholder="(example@gmail.com)"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        class="form-control"
+        required
+        [(ngModel)]="password"
+        placeholder="(6 above Characters with numbers)"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Confirm Password</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        class="form-control"
+        required
+        [(ngModel)]="confirmPassword"
+        [ngClass]="{ 'is-invalid': confirmPassword && confirmPassword !== password }"
+      />
+      <div *ngIf="confirmPassword && confirmPassword !== password" class="invalid-feedback">
+        Passwords do not match.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid || confirmPassword !== password">
+      Register
+    </button>
+  </div>
+</form>

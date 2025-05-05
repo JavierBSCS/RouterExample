@@ -1,0 +1,57 @@
+.navbar {
+  background-color: #343a40;
+  border-bottom: 3px solid #000000;
+}
+
+h4{
+  text-align: left;
+
+}
+
+.navbar-brand {
+  color: #fff !important;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.navbar-toggler-icon {
+  background-color: #fff;
+}
+
+.nav-link {
+  color: #646464;
+  font-size: 1.1rem;
+}
+
+.nav-link:hover {
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.nav-item.active .nav-link {
+  color: #fff !important;
+  font-weight: bold;
+  border-bottom: 2px solid #007bff;
+}
+
+.navbar-collapse {
+  text-align: center;
+}
+
+.navbar-nav {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav-item {
+  margin: 0 15px;
+}
+
+
+.navbar-toggler {
+  border-color: #007bff;
+}
+
+router-outlet {
+  margin-top: 20px;
+}

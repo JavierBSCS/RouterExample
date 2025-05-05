@@ -1,0 +1,50 @@
+<div class="add-service-form-container">
+  <app-add-service (serviceAdded)="addService($event)" [serviceToEdit]="serviceToEdit"></app-add-service>
+</div>
+
+<div class="services-table">
+  <h2>Service List</h2>
+
+  <!-- Wrapper for scrollable table -->
+  <div class="scrollable-table-wrapper">
+    <table border="1" cellspacing="0" cellpadding="10">
+      <thead>
+        <tr>
+          <th>Service ID</th>
+          <th>Service Name</th>
+          <th>Service Category</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let service of services; let i = index">
+          <td>{{ service.id }}</td>
+          <td>{{ service.name }}</td>
+          <td>{{ service.category }}</td>
+          <td>
+            <button 
+            class="btn" 
+            [ngClass]="{'btn-info': !service.showDescription, 'btn-danger': service.showDescription}" 
+            (click)="toggleDescription(i)">
+            {{ service.showDescription ? 'Hide' : 'View' }}
+          </button>
+          
+            <button class="btn btn-primary" (click)="editService(service)">Edit</button>
+            <button class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    
+  </div>
+          <tr *ngFor="let service of services; let i = index">
+          <td colspan="4" *ngIf="service.showDescription">
+            <div class="service-description">
+              <h4>Service ID: {{ service.id }}</h4>
+              <h6>Description:</h6>
+              <p>{{ service.description }}</p>
+            </div>
+          </td>
+        </tr>
+</div>

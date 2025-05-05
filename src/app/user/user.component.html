@@ -1,0 +1,18 @@
+<div class="profile-container mt-5">
+  <h2>Welcome to Your Profile</h2>
+  <div class="profile-picture">
+    <img
+      [src]="profilePictureUrl || 'assets/default-profile.png'"
+      alt="Profile Picture"
+      class="profile-img"
+    />
+    <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+  </div>
+  <div class="profile-details">
+    <p><strong>Full Name:</strong> {{ userProfile?.fullname }}</p>
+    <p><strong>Address:</strong> {{ userProfile?.address }}</p>
+    <p><strong>Mobile Number:</strong> {{ userProfile?.mobilenumber }}</p>
+    <p><strong>Username:</strong> {{ userProfile?.username }}</p>
+    <p><strong>Email:</strong> {{ userProfile?.email }}</p>
+  </div>
+</div>
