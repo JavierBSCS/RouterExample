@@ -1,11 +1,26 @@
-.navbar {
-  background-color: #343a40;
-  border-bottom: 3px solid #000000;
+/* Sticky navbar base setup */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
-h4{
-  text-align: left;
+/* Make sure content below navbar is visible */
+main {
+  padding-top: 80px; /* Adjust if your navbar height is different */
+}
 
+/* Navbar styling */
+.navbar {
+  background-color: #343a40;
+  border-bottom: 3px solid #000;
+  z-index: 1020; /* Keep it on top */
+}
+
+h4 {
+  text-align: left;
+  color: #fff;
+  margin: 0;
+  padding: 0 15px;
 }
 
 .navbar-brand {
@@ -19,39 +34,55 @@ h4{
 }
 
 .nav-link {
-  color: #646464;
+  color: #d3d3d3 !important;
   font-size: 1.1rem;
+  position: relative;
+  padding: 8px 15px;
 }
 
 .nav-link:hover {
-  color: #007bff;
+  color: #fff !important;
   transition: color 0.3s ease;
 }
 
-.nav-item.active .nav-link {
+.nav-link.active {
   color: #fff !important;
   font-weight: bold;
-  border-bottom: 2px solid #007bff;
+  background-color: #007bff;
+  border-radius: 4px;
 }
 
 .navbar-collapse {
-  text-align: center;
+  justify-content: center;
 }
 
 .navbar-nav {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
 }
 
 .nav-item {
-  margin: 0 15px;
+  margin: 0 8px;
 }
-
 
 .navbar-toggler {
   border-color: #007bff;
 }
 
-router-outlet {
-  margin-top: 20px;
+/* Remove underline effect for active nav-link */
+.nav-link.active::after {
+  display: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    text-align: center;
+  }
+
+  .nav-link.active {
+    background-color: transparent;
+    border-bottom: 3px solid #007bff;
+  }
 }

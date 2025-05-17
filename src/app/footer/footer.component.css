@@ -1,28 +1,105 @@
+/* Layout fix to prevent footer overlap */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+}
+
 .footer-container {
-    background-color: #d5dbbe; 
-    padding: 20px; 
+  background: linear-gradient(135deg, #343a40 0%, #212529 100%);
+  padding: 40px 20px 20px;
+  text-align: center;
+  width: 100%;
+  color: #f8f9fa;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  margin-top: 20vh; /* ✅ Add this line */
+}
+
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  text-align: left;
+}
+
+.footer-section {
+  margin-bottom: 20px;
+}
+
+.footer-section h4 {
+  color: #1e90ff;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-section h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 2px;
+  background: #1e90ff;
+}
+
+.footer-section p,
+.footer-section a {
+  color: #adb5bd;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.footer-links a {
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 5px 0;
+}
+
+.footer-links a:hover {
+  color: #1e90ff;
+  transform: translateX(5px);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.school-info {
+  font-style: italic;
+  color: #6c757d !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
     text-align: center;
-    position: fixed; 
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    border-top: 1px solid #ddd; 
   }
-  
-  .footer-container p {
-    margin: 0; 
-    font-size: 14px; 
-    color: #6c757d; 
+
+  .footer-section h4::after {
+    left: 50%;
+    transform: translateX(-50%);
   }
-  
-  .footer-links a {
-    text-decoration: none;
-    color: #007bff; 
-    font-size: 14px;
-    margin: 0 10px; 
-  }
-  
-  .footer-links a:hover {
-    text-decoration: underline;
-  }
-  
+}
